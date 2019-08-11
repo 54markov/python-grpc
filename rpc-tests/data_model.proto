@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+service TestRpc {
+    // A simple RPC
+    rpc SimpleRpc(Request) returns (Responce) {}
+
+    // A response-streaming RPC
+    rpc ResponseStreamRpc(Request) returns (stream Responce) {}
+
+    // A request-streaming RPC
+    rpc RequestStreamRpc(stream Request) returns (Responce) {}
+
+    // A bidirectionally-streaming RPC
+    rpc BidirectionalStream(stream Request) returns (stream Responce) {}
+}
+
+// A request message
+message Request {
+  string request_data = 1;
+}
+
+// A response message
+message Responce {
+  string responce_data = 1;
+}
